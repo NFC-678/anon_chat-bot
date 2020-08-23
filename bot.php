@@ -6,7 +6,7 @@ use DigitalStar\vk_api\VK_api as vk_api;
 use DigitalStar\vk_api\VkApiException;
 
 const VK_KEY = "";  // Ключ доступа
-const CONFIRM_STR = "940becb4";  // Строка, которую должен вернуть сервер
+const CONFIRM_STR = "";  // Строка, которую должен вернуть сервер
 const VERSION = "5.103"; // Версия API VK
 
 $vk = vk_api::create(VK_KEY, VERSION)->setConfirm(CONFIRM_STR);
