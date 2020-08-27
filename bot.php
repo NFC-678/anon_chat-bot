@@ -116,12 +116,12 @@ if($data->type == 'message_new'){
 		if($user['id_interl'] == null || $user['id_interl'] == ''){
 			$vk->sendButton($peer_id, '🤖 Закончено', [[$start]]);
 		}
-		$interlocutor = R::findOne('users', [$user['id_interl']]);
+		$interlocutor = R::findOne('users', 'user_id = ?', [$user['id_interl']]);
 		$interlocutor['id_interl'] = null;
-	  R::store($interlocutor);
+		  R::store($interlocutor);
 		$vk->sendButton($interlocutor['user_id'], '🤖 Вас покинули. Как жаль. Найти еще?', [[$start]]);
 		$user['id_interl'] = null;
-	  R::store($user);
+		  R::store($user);
 		$vk->sendButton($peer_id, '🤖 Закончено', [[$start]]);
 		exit;
 	}
