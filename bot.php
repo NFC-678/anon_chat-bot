@@ -125,16 +125,6 @@ if($data->type == 'message_new'){
 		$vk->sendButton($peer_id, '🤖 Закончено', [[$start]]);
 		exit;
 	}
-	if (mb_substr($message, 0, 1) == '#') {
-		if($user['vote'] == null){
-			$vote = mb_substr($message, 1);
-			$user['vote'] = $vote;
-			R::store($user);
-			$vk->sendMessage($peer_id, "Ваш голос засчитан");
-		}else{
-			$vk->sendMessage($peer_id, "Вы уже проголосовали!");
-		}
-	}
 	if($user['id_interl'] != null && $user['id_interl'] != '' && $payload != 'start' && $payload != 'stop'){
 		$interlocutor = R::findOne('users', 'user_id = ?', [$user['id_interl']]);
 		if(empty($data->object->message->attachments[0])){
